@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <signal id="COMPLETE_SUBFLOW" name="COMPLETE_SUBFLOW" activiti:scope="global"></signal>
+  <message id="CONTINUE_PROCESS" name="CONTINUE_PROCESS-${execution.uid}"></message>
+  <process id="activiti-message-process-demo" name="activiti-message-process-demo" isExecutable="true">
+    <startEvent id="start-event" name="Start event"></startEvent>
+    <serviceTask id="sid-A84C9D57-E8B4-4D47-8641-8DAB1FFF6E9B" name="call subflow-delegate" activiti:delegateExpression="${concurrentSubFlowDelegate}"></serviceTask>
+    <sequenceFlow id="sid-6F6995F5-994D-4139-8F4F-F8609676BE7C" sourceRef="start-event" targetRef="sid-A84C9D57-E8B4-4D47-8641-8DAB1FFF6E9B"></sequenceFlow>
+    <serviceTask id="post-subflow-delegate" name="finish delegate" activiti:delegateExpression="${finishServiceDelegate}"></serviceTask>
+    <endEvent id="end-event" name="End event"></endEvent>
+    <sequenceFlow id="end-event-way" sourceRef="post-subflow-delegate" targetRef="end-event"></sequenceFlow>
+    <endEvent id="error-end" name="Error end event">
+      <errorEventDefinition></errorEventDefinition>
+    </endEvent>
+    <sequenceFlow id="error-end-way" sourceRef="error-timer" targetRef="error-end"></sequenceFlow>
+    <boundaryEvent id="error-timer" attachedToRef="sid-A84C9D57-E8B4-4D47-8641-8DAB1FFF6E9B" cancelActivity="true">
+      <timerEventDefinition>
+        <timeCycle>R1/PT1S</timeCycle>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <intermediateCatchEvent id="catch-message-event" name="Message Reciever">
+      <extensionElements>
+        <activiti:executionListener event="take" class="signalLogger"></activiti:executionListener>
+      </extensionElements>
+      <messageEventDefinition messageRef="CONTINUE_PROCESS"></messageEventDefinition>
+    </intermediateCatchEvent>
+    <sequenceFlow id="wait-message-way" sourceRef="sid-A84C9D57-E8B4-4D47-8641-8DAB1FFF6E9B" targetRef="catch-message-event"></sequenceFlow>
+    <sequenceFlow id="got-message-way" sourceRef="catch-message-event" targetRef="post-subflow-delegate"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_activiti-message-process-demo">
+    <bpmndi:BPMNPlane bpmnElement="activiti-message-process-demo" id="BPMNPlane_activiti-message-process-demo">
+      <bpmndi:BPMNShape bpmnElement="start-event" id="BPMNShape_start-event">
+        <omgdc:Bounds height="30.0" width="30.0" x="100.0" y="163.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-A84C9D57-E8B4-4D47-8641-8DAB1FFF6E9B" id="BPMNShape_sid-A84C9D57-E8B4-4D47-8641-8DAB1FFF6E9B">
+        <omgdc:Bounds height="80.0" width="100.0" x="210.0" y="138.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="post-subflow-delegate" id="BPMNShape_post-subflow-delegate">
+        <omgdc:Bounds height="80.0" width="100.0" x="510.0" y="138.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end-event" id="BPMNShape_end-event">
+        <omgdc:Bounds height="28.0" width="28.0" x="720.0" y="164.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="error-end" id="BPMNShape_error-end">
+        <omgdc:Bounds height="28.0" width="28.0" x="401.0" y="255.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="error-timer" id="BPMNShape_error-timer">
+        <omgdc:Bounds height="31.0" width="31.0" x="249.3527532425192" y="202.5352142507837"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="catch-message-event" id="BPMNShape_catch-message-event">
+        <omgdc:Bounds height="30.0" width="30.0" x="400.0" y="163.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-6F6995F5-994D-4139-8F4F-F8609676BE7C" id="BPMNEdge_sid-6F6995F5-994D-4139-8F4F-F8609676BE7C">
+        <omgdi:waypoint x="130.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="210.0" y="178.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="wait-message-way" id="BPMNEdge_wait-message-way">
+        <omgdi:waypoint x="310.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="400.0" y="178.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="error-end-way" id="BPMNEdge_error-end-way">
+        <omgdi:waypoint x="265.3527532425192" y="234.5352142507837"></omgdi:waypoint>
+        <omgdi:waypoint x="265.3527532425192" y="269.0"></omgdi:waypoint>
+        <omgdi:waypoint x="401.0" y="269.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="got-message-way" id="BPMNEdge_got-message-way">
+        <omgdi:waypoint x="430.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="510.0" y="178.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="end-event-way" id="BPMNEdge_end-event-way">
+        <omgdi:waypoint x="610.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="720.0" y="178.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

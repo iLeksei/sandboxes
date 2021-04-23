@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="activiti-process-demo" name="activiti-process-demo" isExecutable="true">
+    <documentation>demo for understanding  how does activiti work</documentation>
+    <startEvent id="start-activiti-demo"></startEvent>
+    <serviceTask id="call-sub-flow-delegate" name="preparing to call sub activiti flow" activiti:delegateExpression="${prepareSubActivitiFlowDelegate}"></serviceTask>
+    <serviceTask id="finish-service-delagate" name="finish service" activiti:delegateExpression="${finishServiceDelegate}"></serviceTask>
+    <callActivity id="sub-flow" name="activiti sub flow demo" calledElement="activiti-sub-flow-demo" activiti:inheritVariables="true">
+      <extensionElements>
+        <activiti:in source="USER_ID" target="USER_ID"></activiti:in>
+      </extensionElements>
+    </callActivity>
+    <exclusiveGateway id="sid-17A378A4-F8AA-490D-9617-83F59BC3EBA1"></exclusiveGateway>
+    <sequenceFlow id="sid-3A78F726-808C-40E8-A67A-274C5C1D7372" sourceRef="sub-flow" targetRef="finish-service-delagate"></sequenceFlow>
+    <endEvent id="finish-activiti-demo"></endEvent>
+    <sequenceFlow id="end-way" name="end way" sourceRef="finish-service-delagate" targetRef="finish-activiti-demo"></sequenceFlow>
+    <sequenceFlow id="call-sub-flow-way" name="call sub-flow way" sourceRef="call-sub-flow-delegate" targetRef="sub-flow"></sequenceFlow>
+    <sequenceFlow id="start-way" name="start way" sourceRef="start-activiti-demo" targetRef="sid-17A378A4-F8AA-490D-9617-83F59BC3EBA1"></sequenceFlow>
+    <sequenceFlow id="need-to-call-sub-flow-condition" sourceRef="sid-17A378A4-F8AA-490D-9617-83F59BC3EBA1" targetRef="call-sub-flow-delegate">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${ActivitiUtils.needToCallSubFlow(USER)}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-1555C516-5F23-406F-BA0B-CA2E4B402E9F" sourceRef="sid-17A378A4-F8AA-490D-9617-83F59BC3EBA1" targetRef="finish-service-delagate">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!ActivitiUtils.needToCallSubFlow(USER)}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_activiti-process-demo">
+    <bpmndi:BPMNPlane bpmnElement="activiti-process-demo" id="BPMNPlane_activiti-process-demo">
+      <bpmndi:BPMNShape bpmnElement="start-activiti-demo" id="BPMNShape_start-activiti-demo">
+        <omgdc:Bounds height="30.0" width="30.0" x="100.0" y="163.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="call-sub-flow-delegate" id="BPMNShape_call-sub-flow-delegate">
+        <omgdc:Bounds height="80.0" width="100.0" x="300.0" y="45.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="finish-service-delagate" id="BPMNShape_finish-service-delagate">
+        <omgdc:Bounds height="80.0" width="100.0" x="675.0" y="139.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sub-flow" id="BPMNShape_sub-flow">
+        <omgdc:Bounds height="80.0" width="100.0" x="525.0" y="45.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-17A378A4-F8AA-490D-9617-83F59BC3EBA1" id="BPMNShape_sid-17A378A4-F8AA-490D-9617-83F59BC3EBA1">
+        <omgdc:Bounds height="40.0" width="40.0" x="210.0" y="158.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="finish-activiti-demo" id="BPMNShape_finish-activiti-demo">
+        <omgdc:Bounds height="28.0" width="28.0" x="915.0" y="165.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="start-way" id="BPMNEdge_start-way">
+        <omgdi:waypoint x="130.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="210.0" y="178.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="call-sub-flow-way" id="BPMNEdge_call-sub-flow-way">
+        <omgdi:waypoint x="400.0" y="85.0"></omgdi:waypoint>
+        <omgdi:waypoint x="525.0" y="85.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="need-to-call-sub-flow-condition" id="BPMNEdge_need-to-call-sub-flow-condition">
+        <omgdi:waypoint x="230.0" y="158.0"></omgdi:waypoint>
+        <omgdi:waypoint x="230.0" y="85.0"></omgdi:waypoint>
+        <omgdi:waypoint x="300.0" y="85.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-1555C516-5F23-406F-BA0B-CA2E4B402E9F" id="BPMNEdge_sid-1555C516-5F23-406F-BA0B-CA2E4B402E9F">
+        <omgdi:waypoint x="249.95967741935485" y="178.04032258064515"></omgdi:waypoint>
+        <omgdi:waypoint x="675.0" y="178.8989898989899"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-3A78F726-808C-40E8-A67A-274C5C1D7372" id="BPMNEdge_sid-3A78F726-808C-40E8-A67A-274C5C1D7372">
+        <omgdi:waypoint x="575.0" y="125.0"></omgdi:waypoint>
+        <omgdi:waypoint x="575.0" y="179.0"></omgdi:waypoint>
+        <omgdi:waypoint x="675.0" y="179.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="end-way" id="BPMNEdge_end-way">
+        <omgdi:waypoint x="775.0" y="179.0"></omgdi:waypoint>
+        <omgdi:waypoint x="915.0" y="179.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

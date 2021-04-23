@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="activiti-sub-flow-demo" name="activiti-sub-flow-demo" isExecutable="true">
+    <startEvent id="start-sub-flow"></startEvent>
+    <serviceTask id="sub-flow-delegate" name="sub flow service" activiti:delegateExpression="${subFlowDelegate}"></serviceTask>
+    <endEvent id="finish-sub-flow"></endEvent>
+    <sequenceFlow id="start-sub-flow-way" sourceRef="start-sub-flow" targetRef="sub-flow-delegate"></sequenceFlow>
+    <sequenceFlow id="finish-sub-flow-way" sourceRef="sub-flow-delegate" targetRef="finish-sub-flow"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_activiti-sub-flow-demo">
+    <bpmndi:BPMNPlane bpmnElement="activiti-sub-flow-demo" id="BPMNPlane_activiti-sub-flow-demo">
+      <bpmndi:BPMNShape bpmnElement="start-sub-flow" id="BPMNShape_start-sub-flow">
+        <omgdc:Bounds height="30.0" width="30.0" x="100.0" y="163.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sub-flow-delegate" id="BPMNShape_sub-flow-delegate">
+        <omgdc:Bounds height="80.0" width="100.0" x="225.0" y="135.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="finish-sub-flow" id="BPMNShape_finish-sub-flow">
+        <omgdc:Bounds height="28.0" width="28.0" x="435.0" y="160.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="start-sub-flow-way" id="BPMNEdge_start-sub-flow-way">
+        <omgdi:waypoint x="130.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="177.5" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="177.5" y="175.0"></omgdi:waypoint>
+        <omgdi:waypoint x="225.0" y="175.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="finish-sub-flow-way" id="BPMNEdge_finish-sub-flow-way">
+        <omgdi:waypoint x="325.0" y="174.71264367816093"></omgdi:waypoint>
+        <omgdi:waypoint x="435.00023120050867" y="174.0804584413764"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

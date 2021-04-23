@@ -1,14 +1,14 @@
 spring:
   application:
-      name: ssl_client_demo
+    name: ssl_client_demo
 server:
-#    ssl:
-#        key-store: classpath:ssl/key_demo.p12
-#        key-store-password: 123456
-#        key-store-type: pkcs12
-#        key-alias: key_demo
-#        key-password: 123456
-    port: 9002
+  #    ssl:
+  #        key-store: classpath:ssl/key_demo.p12
+  #        key-store-password: 123456
+  #        key-store-type: pkcs12
+  #        key-alias: key_demo
+  #        key-password: 123456
+  port: 9002
 
 trust:
   store: classpath:/ssl/keystore_client.p12

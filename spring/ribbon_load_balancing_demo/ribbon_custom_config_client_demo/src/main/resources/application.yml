@@ -1,0 +1,23 @@
+demo-services-urls: http://127.0.0.1:9001/stub,http://127.0.0.1:9002/stub
+
+server:
+  port: 9006
+demo-services:
+  ribbon:
+    ConnectTimeout: 3000
+    ReadTimeout: 3000
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 1
+    listOfServers: http://127.0.0.1:9001,http://127.0.0.1:9002
+    ServerListRefreshInterval: 15000
+    OkToRetryOnAllOperations: true
+    IsSecure: false
+    IsHostnameValidationRequired: false
+    eureka:
+      enabled: false
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+  eureka:
+    enabled: false

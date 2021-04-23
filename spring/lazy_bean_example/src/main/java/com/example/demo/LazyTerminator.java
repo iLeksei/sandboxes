@@ -13,7 +13,7 @@ public class LazyTerminator {
         System.out.println("Lazy Terminator is waking up");
     }
 
-//    @Scheduled(fixedDelay = 1200)
+    //    @Scheduled(fixedDelay = 1200)
     public void killEnemies() {
         System.out.println("sorry, i am lazy, not today :)");
     }

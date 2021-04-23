@@ -10,7 +10,10 @@ public class Patient {
     private int age;
     private String method;
 
-    Patient() {};
+    Patient() {
+    }
+
+    ;
 
     public Patient(String name, int age, String method) {
         this.name = name;

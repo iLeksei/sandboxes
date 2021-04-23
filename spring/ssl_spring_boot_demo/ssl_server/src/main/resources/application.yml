@@ -6,5 +6,5 @@ server:
     key-alias: keystore_server
     key-password: 123456
     enabled: true
-#    client-auth: need
+  #    client-auth: need
   port: 8443

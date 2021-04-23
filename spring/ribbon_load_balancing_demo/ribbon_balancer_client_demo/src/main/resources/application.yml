@@ -1,0 +1,17 @@
+demo-services:
+  ribbon:
+    MaxAutoRetries: 1
+    listOfServers: http://127.0.0.1:9001,http://127.0.0.1:9002
+    ServerListRefreshInterval: 15000
+    OkToRetryOnAllOperations: true
+    eureka:
+      enabled: false
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+ribbon:
+  eureka:
+    enabled: false
+server:
+  port: 9005

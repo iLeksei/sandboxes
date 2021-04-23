@@ -1,0 +1,1 @@
+java -jar -Dspring.profiles.active=service_com ./target/service_demo.jar

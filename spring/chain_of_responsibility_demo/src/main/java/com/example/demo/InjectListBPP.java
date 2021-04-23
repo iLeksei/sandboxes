@@ -27,11 +27,11 @@ public class InjectListBPP implements BeanPostProcessor {
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         Set<Field> fields = ReflectionUtils.getAllFields(bean.getClass(),
                 field -> field.isAnnotationPresent(InjectList.class));
-        for (Field field: fields) {
+        for (Field field : fields) {
             InjectList annotation = field.getAnnotation(InjectList.class);
             List<Object> list = Arrays.stream(annotation.value())
                     .map(aClass -> Introspector.decapitalize(aClass.getSimpleName()))
-                    .map( name -> context.getBean(name))
+                    .map(name -> context.getBean(name))
                     .collect(Collectors.toList());
             field.setAccessible(true);
             try {

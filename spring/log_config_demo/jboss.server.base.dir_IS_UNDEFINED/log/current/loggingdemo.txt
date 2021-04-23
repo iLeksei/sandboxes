@@ -1,0 +1,60 @@
+11.10.2020 00:01:31.640 [main] INFO   c.e.l.Application - Starting Application on DESKTOP-5LJV2H7 with PID 15224 (F:\Lessons\loggingdemo\target\classes started by Aleksei in F:\Lessons\loggingdemo)
+11.10.2020 00:01:31.649 [main] INFO   c.e.l.Application - No active profile set, falling back to default profiles: default
+11.10.2020 00:01:33.615 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+11.10.2020 00:01:33.624 [main] INFO   o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+11.10.2020 00:01:33.624 [main] INFO   o.a.c.c.StandardService - Starting service [Tomcat]
+11.10.2020 00:01:33.625 [main] INFO   o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.34]
+11.10.2020 00:01:33.761 [main] INFO   o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+11.10.2020 00:01:33.761 [main] INFO   o.s.w.c.ContextLoader - Root WebApplicationContext: initialization completed in 2033 ms
+11.10.2020 00:01:33.948 [main] INFO   o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+11.10.2020 00:01:34.117 [main] INFO   o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+11.10.2020 00:01:34.138 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+11.10.2020 00:01:34.141 [main] INFO   c.e.l.Application - Started Application in 3.257 seconds (JVM running for 6.405)
+11.10.2020 00:02:12.924 [main] INFO   c.e.l.Application - Starting Application on DESKTOP-5LJV2H7 with PID 10756 (F:\Lessons\loggingdemo\target\classes started by Aleksei in F:\Lessons\loggingdemo)
+11.10.2020 00:02:12.927 [main] INFO   c.e.l.Application - No active profile set, falling back to default profiles: default
+11.10.2020 00:02:13.693 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+11.10.2020 00:02:13.701 [main] INFO   o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+11.10.2020 00:02:13.701 [main] INFO   o.a.c.c.StandardService - Starting service [Tomcat]
+11.10.2020 00:02:13.702 [main] INFO   o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.34]
+11.10.2020 00:02:13.781 [main] INFO   o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+11.10.2020 00:02:13.781 [main] INFO   o.s.w.c.ContextLoader - Root WebApplicationContext: initialization completed in 818 ms
+11.10.2020 00:02:13.908 [main] INFO   o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+11.10.2020 00:02:14.020 [main] INFO   o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+11.10.2020 00:02:14.039 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+11.10.2020 00:02:14.042 [main] INFO   c.e.l.Application - Started Application in 1.421 seconds (JVM running for 3.088)
+11.10.2020 00:02:20.314 [main] INFO   c.e.l.Application - Starting Application on DESKTOP-5LJV2H7 with PID 3104 (F:\Lessons\loggingdemo\target\classes started by Aleksei in F:\Lessons\loggingdemo)
+11.10.2020 00:02:20.318 [main] INFO   c.e.l.Application - No active profile set, falling back to default profiles: default
+11.10.2020 00:02:21.094 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+11.10.2020 00:02:21.100 [main] INFO   o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+11.10.2020 00:02:21.101 [main] INFO   o.a.c.c.StandardService - Starting service [Tomcat]
+11.10.2020 00:02:21.101 [main] INFO   o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.34]
+11.10.2020 00:02:21.184 [main] INFO   o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+11.10.2020 00:02:21.184 [main] INFO   o.s.w.c.ContextLoader - Root WebApplicationContext: initialization completed in 812 ms
+11.10.2020 00:02:21.308 [main] INFO   o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+11.10.2020 00:02:21.425 [main] INFO   o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+11.10.2020 00:02:21.444 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+11.10.2020 00:02:21.447 [main] INFO   c.e.l.Application - Started Application in 1.435 seconds (JVM running for 3.189)
+11.10.2020 00:02:28.202 [main] INFO   c.e.l.Application - Starting Application on DESKTOP-5LJV2H7 with PID 8972 (F:\Lessons\loggingdemo\target\classes started by Aleksei in F:\Lessons\loggingdemo)
+11.10.2020 00:02:28.208 [main] INFO   c.e.l.Application - No active profile set, falling back to default profiles: default
+11.10.2020 00:02:29.105 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+11.10.2020 00:02:29.113 [main] INFO   o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+11.10.2020 00:02:29.113 [main] INFO   o.a.c.c.StandardService - Starting service [Tomcat]
+11.10.2020 00:02:29.113 [main] INFO   o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.34]
+11.10.2020 00:02:29.267 [main] INFO   o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+11.10.2020 00:02:29.268 [main] INFO   o.s.w.c.ContextLoader - Root WebApplicationContext: initialization completed in 1008 ms
+11.10.2020 00:02:29.516 [main] INFO   o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+11.10.2020 00:02:29.730 [main] INFO   o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+11.10.2020 00:02:29.767 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+11.10.2020 00:02:29.773 [main] INFO   c.e.l.Application - Started Application in 1.935 seconds (JVM running for 2.991)
+11.10.2020 00:02:34.550 [main] INFO   c.e.l.Application - Starting Application on DESKTOP-5LJV2H7 with PID 7408 (F:\Lessons\loggingdemo\target\classes started by Aleksei in F:\Lessons\loggingdemo)
+11.10.2020 00:02:34.564 [main] INFO   c.e.l.Application - No active profile set, falling back to default profiles: default
+11.10.2020 00:02:35.680 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+11.10.2020 00:02:35.695 [main] INFO   o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+11.10.2020 00:02:35.696 [main] INFO   o.a.c.c.StandardService - Starting service [Tomcat]
+11.10.2020 00:02:35.697 [main] INFO   o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.34]
+11.10.2020 00:02:35.877 [main] INFO   o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+11.10.2020 00:02:35.878 [main] INFO   o.s.w.c.ContextLoader - Root WebApplicationContext: initialization completed in 1268 ms
+11.10.2020 00:02:36.157 [main] INFO   o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+11.10.2020 00:02:36.371 [main] INFO   o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+11.10.2020 00:02:36.410 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+11.10.2020 00:02:36.415 [main] INFO   c.e.l.Application - Started Application in 2.166 seconds (JVM running for 3.285)

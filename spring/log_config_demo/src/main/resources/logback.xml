@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--error > warn > info > debug > fine-->
+<configuration>
+<!--    консольный вывод-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level  %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+<!--    файловый вывод-->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${jboss.server.base.dir}/log/current/loggingdemo.txt</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${jboss.server.base.dir}/log/archive/loggingdemo/%d{yyyy-MM-dd}/loggingdemo-%d{yyyy-MM-dd_HH-mm,aux}.log.gz
+            </fileNamePattern>
+            <!-- Храним файлы логов 10 дней -->
+            <maxHistory>1</maxHistory>
+            <!-- Максимальный размер файлов лога 1 мегабайт -->
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level  %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>

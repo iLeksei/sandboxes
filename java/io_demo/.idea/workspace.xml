@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9f1f8732-9266-48c6-97d4-a71381a7fa5e" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aorDKe1uATqZY1YbjT9pvXmDGH" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.lessons.SerializationDemo" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="CyclicBarrierDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lessons.ConcurrentDemo.CyclicBarrierDemo.CyclicBarrierDemo" />
+      <module name="IO_demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lessons.ConcurrentDemo.CyclicBarrierDemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExchangerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lessons.ConcurrentDemo.ExchangerDemo.ExchangerDemo" />
+      <module name="IO_demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lessons.ConcurrentDemo.ExchangerDemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lessons.Main" />
+      <module name="IO_demo" />
+      <option name="PROGRAM_PARAMETERS" value="-Duser.nickname=bobby" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lessons.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VolatileDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lessons.ConcurrentDemo.VolatileDemo" />
+      <module name="IO_demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lessons.ConcurrentDemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WaitNotify" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lessons.ConcurrentDemo.waitnotify.WaitNotify" />
+      <module name="IO_demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lessons.ConcurrentDemo.waitnotify.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.CyclicBarrierDemo" />
+      <item itemvalue="Application.ExchangerDemo" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.VolatileDemo" />
+      <item itemvalue="Application.WaitNotify" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ExchangerDemo" />
+        <item itemvalue="Application.WaitNotify" />
+        <item itemvalue="Application.VolatileDemo" />
+        <item itemvalue="Application.CyclicBarrierDemo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9f1f8732-9266-48c6-97d4-a71381a7fa5e" name="Default Changelist" comment="" />
+      <created>1587412666476</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587412666476</updated>
+      <workItem from="1587412670866" duration="3244000" />
+      <workItem from="1587487620080" duration="10996000" />
+      <workItem from="1587576532150" duration="5854000" />
+      <workItem from="1587659647451" duration="12271000" />
+      <workItem from="1587725935492" duration="1192000" />
+      <workItem from="1588004728057" duration="5474000" />
+      <workItem from="1588076832405" duration="590000" />
+      <workItem from="1588100489652" duration="3395000" />
+      <workItem from="1588180668376" duration="4708000" />
+      <workItem from="1588259075450" duration="98000" />
+      <workItem from="1588351628541" duration="10026000" />
+      <workItem from="1588684382684" duration="7101000" />
+      <workItem from="1588693682862" duration="5033000" />
+      <workItem from="1588780365453" duration="1080000" />
+      <workItem from="1589220772461" duration="2425000" />
+      <workItem from="1589300945088" duration="1569000" />
+      <workItem from="1589636752642" duration="1050000" />
+      <workItem from="1589650398873" duration="42000" />
+      <workItem from="1590780928217" duration="1039000" />
+      <workItem from="1591211067397" duration="708000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
