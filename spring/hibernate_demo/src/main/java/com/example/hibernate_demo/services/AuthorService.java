@@ -8,6 +8,7 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Slf4j
@@ -23,7 +24,7 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-//    @Transactional
+    @Transactional
     public Author createAuthor(@NonNull String authorFullName, @NonNull String login) {
         try {
             LOG.info("Start to create author with fullName: {} and login: {}", authorFullName, login);
@@ -33,8 +34,8 @@ public class AuthorService {
 
             Account account = createAccount(author, login);
             author.setAccount(account);
-            authorRepository.saveAndFlush(author);
-//            accountRepository.save(account);
+//            authorRepository.saveAndFlush(author);
+            accountRepository.save(account);
             return author;
         } catch (Exception e) {
             LOG.error("Gor error with creating author with fullName: {}", authorFullName);
@@ -45,7 +46,7 @@ public class AuthorService {
 
     Account createAccount(Author author, String login) {
         Account account = new Account();
-        account.setId(author.getId());
+//        account.setId(author.getId());
         account.setAuthor(author);
         account.setLogin(login);
         return account;

@@ -3,7 +3,6 @@ package com.example.hibernate_demo.entities;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -26,6 +25,7 @@ public class Author implements Serializable {
     @Column(name = "FULLNAME", nullable = false)
     private String fullName;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},  orphanRemoval = true, mappedBy = "author")
+    @PrimaryKeyJoinColumn
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL},  orphanRemoval = true)
     private Account account;
 }

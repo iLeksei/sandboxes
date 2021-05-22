@@ -4,8 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.transaction.annotation.Transactional;
-
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -20,20 +20,16 @@ public class Account implements Serializable {
     private static final long serialVersionUID = -3137902722796945521L;
 
     @Id
-    @Column(name = "ACC_ID", nullable = true)
+    @Column(name = "ACC_ID", nullable = false, unique = true)
+    @GeneratedValue(generator = "SEQ_STORE_ID")
+    @GenericGenerator(strategy = "foreign", name="SEQ_STORE_ID",
+            parameters = @Parameter(name = "property", value="author"))
     private Long id;
 
     @Column(name = "LOGIN", nullable = false, length = 25)
     private String login;
 
-//    @MapsId("id")
-    @PrimaryKeyJoinColumn(name = "ACC_ID", referencedColumnName = "ID")
-    @OneToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "ACC_ID", nullable = true)
+//    @PrimaryKeyJoinColumn(name = "ACC_ID", referencedColumnName = "ID")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "account")
     private Author author;
-
-    public void setAuthor(Author author) {
-//        this.id = author != null ? author.getId() : null;
-        this.author = author;
-    }
 }
