@@ -1,0 +1,16 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+  endpoint:
+    metrics:
+      enabled: true
+  metrics:
+    export:
+      influx:
+        enabled: true
+        uri: http://localhost:8086
+        db: db1

@@ -30,6 +30,6 @@ public class Account implements Serializable {
     private String login;
 
 //    @PrimaryKeyJoinColumn(name = "ACC_ID", referencedColumnName = "ID")
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "account")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "account")
     private Author author;
 }

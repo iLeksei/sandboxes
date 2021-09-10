@@ -26,6 +26,6 @@ public class Author implements Serializable {
     private String fullName;
 
     @PrimaryKeyJoinColumn
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL},  orphanRemoval = true)
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},  orphanRemoval = true)
     private Account account;
 }

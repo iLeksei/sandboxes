@@ -1,0 +1,21 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+  endpoint:
+    metrics:
+      enabled: true
+  metrics:
+    export:
+      influx:
+        step: 5s
+        enabled: true
+        uri: http://localhost:8086
+        db: db1
+
+instanceName: ${instance_name:test_1}
+server:
+  port: ${PORT:8082}

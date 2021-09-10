@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,13 @@ public class AuthorController {
       } else {
         return "";
       }
+    }
+
+    @DeleteMapping("/author")
+    public String deleteAuthor(@RequestParam("fullName") String fullName) {
+        LOG.info("Will delete author with fullName: {}", fullName);
+        String result = authorService.deleteAuthor(fullName);
+        return "OK".equals(result) ? "OK" : "ERROR";
     }
 
 }

@@ -52,4 +52,16 @@ public class AuthorService {
         return account;
     }
 
+    @Transactional
+    public String deleteAuthor(String fullName) {
+        try {
+            Author author = authorRepository.findAuthorByFullName(fullName);
+            accountRepository.delete(author.getAccount());
+            authorRepository.delete(author);
+            return "OK";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "ERROR";
+        }
+    }
 }
