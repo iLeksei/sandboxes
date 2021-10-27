@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.UUID;
 
+import static com.example.sprinboot_statemachine_demo.utils.MessageUtils.buildMessage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //@RunWith(SpringRunner.class)
@@ -50,13 +51,13 @@ public class MailStataMachineTest {
         assertEquals(MailState.NEW.toString(), stateMachine.getState().getId().toString());
         Message msg = null;
 
-        stateMachine.sendEvent(MailEvent.ACCEPT);
+        stateMachine.sendEvent(buildMessage(1L, MailEvent.ACCEPT));
         assertEquals(MailState.ACCEPTED.toString(), stateMachine.getState().getId().toString());
 
-        stateMachine.sendEvent(MailEvent.VALIDATE);
+        stateMachine.sendEvent(buildMessage(1L, MailEvent.VALIDATE));
         assertEquals(MailState.VALID.toString(), stateMachine.getState().getId().toString());
 
-        stateMachine.sendEvent(MailEvent.SEND);
+        stateMachine.sendEvent(buildMessage(1L, MailEvent.SEND));
         assertEquals(MailState.DELIVERED.toString(), stateMachine.getState().getId().toString());
         stateMachine.stop();
     }

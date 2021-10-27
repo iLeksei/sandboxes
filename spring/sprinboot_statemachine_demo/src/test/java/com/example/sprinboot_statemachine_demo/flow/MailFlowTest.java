@@ -7,7 +7,6 @@ import com.example.sprinboot_statemachine_demo.enums.MailState;
 import com.example.sprinboot_statemachine_demo.repositories.MailRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,8 +16,6 @@ import org.springframework.http.*;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Objects;
@@ -29,7 +26,6 @@ import java.util.concurrent.Future;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Application.class})
@@ -44,9 +40,6 @@ public class MailFlowTest {
 
     @Autowired
     MailRepository mailRepository;
-
-//    @Autowired
-//    MockMvc mockMvc;
 
     @Before
     public void setUp() throws JsonProcessingException {
