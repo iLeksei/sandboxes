@@ -6,27 +6,22 @@ import com.example.sprinboot_statemachine_demo.enums.MailEvent;
 import com.example.sprinboot_statemachine_demo.enums.MailState;
 import com.example.sprinboot_statemachine_demo.repositories.MailRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.internal.build.AllowPrintStacktrace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
-import org.springframework.statemachine.StateContext;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.config.StateMachineFactory;
 import org.springframework.statemachine.state.State;
 import org.springframework.statemachine.support.DefaultStateMachineContext;
-import org.springframework.statemachine.support.StateMachineInterceptor;
 import org.springframework.statemachine.support.StateMachineInterceptorAdapter;
 import org.springframework.statemachine.transition.Transition;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Slf4j
 @Service
-public class MailServiceImpl implements MailService{
+public class MailServiceImpl implements MailService {
 
     public final String MAIL_ID_HEADER = "MAIL_ID";
 
@@ -42,7 +37,7 @@ public class MailServiceImpl implements MailService{
     }
 
     @Override
-    public void registerNewMail(MailDto newMail) {
+    public Mail processNewMail(MailDto newMail) {
         Mail mail = Mail.builder()
                 .author(newMail.getAuthor())
                 .address(newMail.getAddress())
@@ -51,6 +46,7 @@ public class MailServiceImpl implements MailService{
         Mail savedMail = mailRepository.saveAndFlush(mail);
         StateMachine<MailState, MailEvent> sm = build(savedMail);
         sendEvent(savedMail.getId(), sm, MailEvent.ACCEPT);
+        return savedMail;
     }
 
     private void sendEvent(Long mailId, StateMachine<MailState, MailEvent> sm, MailEvent event) {
@@ -67,6 +63,7 @@ public class MailServiceImpl implements MailService{
         sm.stop();
 
         // reset statemachine manually
+        // and set mail state
         sm.getStateMachineAccessor()
                 .doWithAllRegions( sma -> {
                     sma.resetStateMachine(new DefaultStateMachineContext<>(

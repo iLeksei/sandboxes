@@ -1,7 +1,9 @@
 package com.example.sprinboot_statemachine_demo;
 
+import com.example.sprinboot_statemachine_demo.entities.Mail;
 import com.example.sprinboot_statemachine_demo.enums.MailEvent;
 import com.example.sprinboot_statemachine_demo.enums.MailState;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,21 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //@RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class MailStataMachineTest {
 
     @Autowired
     StateMachineFactory<MailState, MailEvent> factory;
+
+    private Mail mail;
+
+    @Before
+    public void prepareTestData() {
+        Mail mail = Mail.builder()
+                .address("testAddress")
+                .author("testAuthor")
+                .build();
+    }
 
     @Test
     public void shouldCreateStateMachine() {

@@ -27,7 +27,7 @@ import static org.mockito.BDDMockito.then;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(MailController.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class MailControllerTest {
 
     @Autowired
@@ -55,7 +55,7 @@ public class MailControllerTest {
             .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().is2xxSuccessful());
 
-        then(mailService).should().registerNewMail(mail);
+        then(mailService).should().processNewMail(mail);
     }
 
 

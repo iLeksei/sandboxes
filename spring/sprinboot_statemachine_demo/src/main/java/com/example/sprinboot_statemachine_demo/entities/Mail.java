@@ -29,7 +29,7 @@ public class Mail {
     @Column(name = "ADDRESS", nullable = false, length = 20)
     private String address;
 
-    @ToString.Exclude
+    @ToString.Include
     @Enumerated(EnumType.STRING)
     private MailState mailState;
 

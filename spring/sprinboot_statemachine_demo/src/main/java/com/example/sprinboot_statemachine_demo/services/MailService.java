@@ -5,6 +5,6 @@ import com.example.sprinboot_statemachine_demo.entities.Mail;
 
 public interface MailService {
 
-    public void registerNewMail(MailDto newMail);
+    public Mail processNewMail(MailDto newMail);
 
 }

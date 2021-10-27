@@ -10,8 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.transform.OutputKeys;
-
 
 @Slf4j
 @RestController
@@ -31,10 +29,11 @@ public class MailController {
 
 
     @PostMapping(value = "/mail", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<HttpStatus> sendMail(@RequestBody MailDto mail) {
+    public ResponseEntity<MailDto> sendMail(@RequestBody MailDto mail) {
         log.info("Got new mail: {}", mail);
-        mailService.registerNewMail(mail);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Mail savedMail = mailService.processNewMail(mail);
+        MailDto responseMail = MailDto.of(savedMail);
+        return new ResponseEntity<>(responseMail, HttpStatus.OK);
     }
 
 }

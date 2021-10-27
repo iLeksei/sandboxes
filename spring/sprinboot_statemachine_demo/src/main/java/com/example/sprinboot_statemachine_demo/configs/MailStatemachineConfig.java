@@ -4,14 +4,12 @@ import com.example.sprinboot_statemachine_demo.entities.Mail;
 import com.example.sprinboot_statemachine_demo.enums.MailEvent;
 import com.example.sprinboot_statemachine_demo.enums.MailState;
 import com.example.sprinboot_statemachine_demo.repositories.MailRepository;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateContext;
-import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.action.Action;
 import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.EnumStateMachineConfigurerAdapter;
@@ -20,9 +18,10 @@ import org.springframework.statemachine.config.builders.StateMachineStateConfigu
 import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
 import org.springframework.statemachine.listener.StateMachineListenerAdapter;
 import org.springframework.statemachine.state.State;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.EnumSet;
+
+import static com.example.sprinboot_statemachine_demo.utils.MessageUtils.buildMessage;
 
 @Slf4j
 @Configuration
@@ -37,43 +36,38 @@ public class MailStatemachineConfig extends EnumStateMachineConfigurerAdapter<Ma
     }
 
     private final Action<MailState, MailEvent> actionAccept = ctx -> {
-        logAction(ctx);
         Long mailId = (Long) ctx.getMessageHeader("MAIL_ID");
+        logAction(ctx, mailId);
         ctx.getStateMachine().sendEvent(buildMessage(mailId, MailEvent.VALIDATE));
     };
 
     private final Action<MailState, MailEvent> actionValidate = ctx -> {
-        logAction(ctx);
         Long mailId = (Long) ctx.getMessageHeader("MAIL_ID");
+        logAction(ctx, mailId);
         assert mailId != null;
         Mail mail = mailRepository.getOne(mailId);
 
         if (mail.isValid()) {
-            ctx.getStateMachine().sendEvent(buildMessage(mailId, MailEvent.VALIDATE));
+            ctx.getStateMachine().sendEvent(buildMessage(mailId, MailEvent.SEND));
         } else {
             ctx.getStateMachine().sendEvent(buildMessage(mailId, MailEvent.REJECT));
         }
     };
 
     private final Action<MailState, MailEvent> actionSend  = ctx -> {
-        logAction(ctx);
         Long mailId = (Long)  ctx.getMessageHeader("MAIL_ID");
+        logAction(ctx, mailId);
         assert mailId != null;
-        Mail mail = mailRepository.getOne(mailId);
+        ctx.getStateMachine().sendEvent(buildMessage(mailId, MailEvent.SEND));
     };
 
     private final Action<MailState, MailEvent> actionReject  = ctx -> {
-        logAction(ctx);
         Long mailId = (Long)  ctx.getMessageHeader("MAIL_ID");
+        logAction(ctx, mailId);
         assert mailId != null;
-        Mail mail = mailRepository.getOne(mailId);
+        ctx.getStateMachine().sendEvent(buildMessage(mailId, MailEvent.REJECT));
     };
 
-    private Message<MailEvent> buildMessage(Long mailId, MailEvent event) {
-        return MessageBuilder.withPayload(event)
-                .setHeader("MAIL_ID", mailId)
-                .build();
-    }
 
     @Override
     public void configure(StateMachineStateConfigurer<MailState, MailEvent> states) throws Exception {
@@ -117,10 +111,8 @@ public class MailStatemachineConfig extends EnumStateMachineConfigurerAdapter<Ma
         config.withConfiguration().listener(adapter);
     }
 
-    void logAction(StateContext<MailState, MailEvent> ctx) {
+    void logAction(StateContext<MailState, MailEvent> ctx, Long mailId) {
         MailState id = ctx.getStateMachine().getState().getId();
-        Long mailId = (Long) ctx.getMessageHeader("MAIL_ID");
-        System.out.println(mailId);
         if (mailId != null) {
             Mail mail = mailRepository.getOne(mailId);
             log.info("MAIL={} STATE={}", mail, id + "");
