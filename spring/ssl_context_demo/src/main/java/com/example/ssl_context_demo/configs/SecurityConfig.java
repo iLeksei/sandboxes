@@ -1,2 +1,17 @@
-package com.example.ssl_context_demo.configs;public class SecurityConfig {
+package com.example.ssl_context_demo.configs;
+
+
+//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+//@EnableWebSecurity
+public class SecurityConfig {
+//        extends WebSecurityConfigurerAdapter {
+
+//    @Override
+//    protected void configure(final HttpSecurity http) throws Exception {
+//        http.requiresChannel().anyRequest().requiresSecure();
+//    }
+
 }

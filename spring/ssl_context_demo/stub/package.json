@@ -1,0 +1,20 @@
+{
+  "name": "stub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stub_1": "node index.js --env.STUB_PORT=1414",
+    "stub_2": "node index.js --env.STUB_POTT=1415"
+  },
+  "author": "https://github.com/iLeksei",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "ip": "^1.1.5"
+  },
+  "devDependencies": {
+  }
+}
