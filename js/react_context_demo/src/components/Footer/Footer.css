@@ -1,0 +1,15 @@
+
+.footer__container {
+    min-height: 25px;
+    display: flex;
+    width: var(--base-width);
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+}
+
+.footer__counter,
+.footer__selected-user {
+    padding-left: 2px;
+    padding-right: 20px;
+}

@@ -1,0 +1,15 @@
+
+.main__container {
+    min-height: 50px;
+    width: 500px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.main__heading {
+    /*padding: 4px;*/
+}
+
+.main__load-data-btn:hover,
+.main__clear-data-btn:hover {
+    cursor: pointer;
+}
