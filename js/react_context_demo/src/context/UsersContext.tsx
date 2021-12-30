@@ -2,13 +2,13 @@ import React, { ReactElement, useState, useRef, useCallback, createContext } fro
 import Post from "../entities/User";
 import Action from "../entities/Action";
 
-export const PostsContext = createContext<{users: Post[] | null, selectedUser: Post | null} | null>(null);
-export const PostsDispatchContext = createContext<any>(null);
+export const UsersContext = createContext<{users: Post[] | null, selectedUser: Post | null} | null>(null);
+export const UsersDispatchContext = createContext<any>(null);
 
 /**
  *  this is simple example how we can use React context instead of redux
  */
-export const WithUsers = ({ children }: any): ReactElement => {
+export const UsersContextComponent = ({ children }: any): ReactElement => {
     const [state, setState] = useState<{users: Post[] | null, selectedUser: Post | null} | null>(null);
     // const [posts, setPosts] = useState<Post[] | null>(null);
     // const [selectedPost, setSelectedPosts] = useState<Post | null>(null);
@@ -37,10 +37,10 @@ export const WithUsers = ({ children }: any): ReactElement => {
         (action: Action) => dispatchRef.current?.(action) , [])
 
     return (
-        <PostsContext.Provider value={state}>
-            <PostsDispatchContext.Provider value={dispatch}>
+        <UsersContext.Provider value={state}>
+            <UsersDispatchContext.Provider value={dispatch}>
                 { children }
-            </PostsDispatchContext.Provider>
-        </PostsContext.Provider>
+            </UsersDispatchContext.Provider>
+        </UsersContext.Provider>
     );
 }

@@ -1,16 +1,19 @@
 import React from 'react';
 import './App.css';
 import {Main} from "./components/Main/Main";
-import {WithUsers} from "./context/WithPosts";
+import {UsersContext} from "./context/UsersContext";
 import {Footer} from "./components/Footer/Footer";
+import {WithUsers} from "./hocs/WithUsers";
 
 function App() {
     return (
     <div className="App">
-        <WithUsers>
-            <Main />
+        <UsersContext>
+            {
+                WithUsers(<Main/>)
+            }
             <Footer />
-        </WithUsers>
+        </UsersContext>
     </div>
   );
 }

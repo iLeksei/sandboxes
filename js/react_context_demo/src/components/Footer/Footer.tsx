@@ -2,7 +2,7 @@ import React, {ReactElement, useContext} from "react";
 import User from "../../entities/User";
 
 import "./Footer.css";
-import {PostsContext, PostsDispatchContext} from "../../context/WithPosts";
+import {PostsContext, PostsDispatchContext} from "../../context/UsersContext";
 
 interface IProps {
 }

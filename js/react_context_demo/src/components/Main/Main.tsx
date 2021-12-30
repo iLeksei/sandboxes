@@ -2,16 +2,17 @@ import React, {ReactElement, useContext, useEffect} from "react";
 
 import "./Main.css";
 import {MainController} from "../../controllers/MainController";
-import {PostsContext, PostsDispatchContext} from "../../context/WithPosts";
+import {UsersContext, UsersDispatchContext} from "../../context/UsersContext";
 import User from "../../entities/User";
 import {MemoizedUsersList, UsersList} from "../UsersList/UsersList";
+import Post from "../../entities/User";
 
 interface IProps {
+    usersDispatch: (dispatch: any) => any,
+    usersState: { users: Post[] | null, selectedUser: Post | null } ,
 }
 
 export const Main = (props: IProps): ReactElement => {
-    const usersState = useContext(PostsContext);
-    const dispatch = useContext(PostsDispatchContext);
 
     // useEffect(() => {
     //     console.log(usersState)
@@ -19,16 +20,15 @@ export const Main = (props: IProps): ReactElement => {
 
     const loadPostsBtnClick = async () => {
         const data = await MainController.fetchUsers();
-        dispatch({ type: "SET_USERS", payload: data })
-        console.log(usersState);
+        props.usersDispatch({ type: "SET_USERS", payload: data })
     }
 
     const clearPostsBtnClick = () => {
-        dispatch({ type: "RESET_STORE" })
+        props.usersDispatch({ type: "RESET_STORE" })
     };
 
     const onUserCLick = (user: User): any => {
-        dispatch({ type: "SELECT_USER", payload: user });
+        props.usersDispatch({ type: "SELECT_USER", payload: user });
     }
 
 
@@ -56,8 +56,8 @@ export const Main = (props: IProps): ReactElement => {
             <div>
                 <UsersList
                     onUserClick={onUserCLick}
-                    users={usersState?.users}
-                    selectedUser={usersState?.selectedUser}
+                    users={props.usersState?.users}
+                    selectedUser={props.usersState?.selectedUser}
                 />
             </div>
         </div>
